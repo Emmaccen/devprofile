@@ -1,7 +1,37 @@
+/* Globals */
+
+* {
+  box-sizing: border-box;
+  transition: .5s all ease;
+}
+
 body {
   margin: 0;
   font-family: 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.backgroundFix {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+/* Navigation style section */
+
+.navbar-nav {
+
+}
+
+/* Homepage Section Style */
+
+.homepageContainer {
+  width: 100%;
+  height : 700px;
+  background-image: url(/images/home.jpg);
+
 }
