@@ -1,5 +1,8 @@
 /* Globals */
 
+:root{
+  --primary : #007bff;
+}
 * {
   box-sizing: border-box;
   transition: .5s all ease;
@@ -13,10 +16,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .backgroundFix {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap : 20px;
 }
 
 
@@ -34,4 +49,56 @@ body {
   height : 700px;
   background-image: url(/images/home.jpg);
 
+}
+
+/* .section {
+  width: 95%;
+  margin : auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+} */
+
+/* create profile section style */
+form p {
+  margin : 15px 0px;
+}
+input , label {
+  display: block;
+  margin : 5px 0px;
+}
+.section2 textarea {
+  resize: none;
+}
+.grid2 input{
+   width: 80%;
+}
+.fluidGrid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 30px;
+  margin : 10px 0px;
+}
+
+.educationWrapper, .aboutWrapper, .softSkillsWrapper, .projectsWrapper {
+  padding : 30px;
+  background-color: #f3f3f3;
+}
+
+.softSkillsWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.softSkillsWrapper .rating {
+  margin : 5px 10px;
+}
+
+/* profile style section */
+
+.profileImage {
+  width: 190px;
+  height: 190px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background : linear-gradient(rgba(0, 0, 255, .4), rgba(0,255,0,.5));
 }
