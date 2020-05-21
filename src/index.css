@@ -2,6 +2,7 @@
 
 :root{
   --primary : #007bff;
+  /* --outline : #28a745; */
 }
 * {
   box-sizing: border-box;
@@ -27,6 +28,12 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+button, input, textarea {
+  
+}
+.formGroup button{
+  outline-color: var(--primary);
 }
 .grid2 {
   display: grid;
@@ -59,6 +66,11 @@ body {
 } */
 
 /* create profile section style */
+
+.required::after {
+  content: '*';
+  color : red;
+}
 form p {
   margin : 15px 0px;
 }
@@ -101,4 +113,9 @@ input , label {
   margin-bottom: 10px;
   border-radius: 50%;
   background : linear-gradient(rgba(0, 0, 255, .4), rgba(0,255,0,.5));
+}
+
+.section3 textarea {
+  height: 100px;
+  resize: none;
 }
