@@ -1,8 +1,11 @@
 import React from 'react'
 import AdminHeader from './AdminHeader'
 import ProfileMaker from './ProfileMaker'
+import ProfileOverview from './ProfileOverview'
+import ProfilePopUp from './ProfilePopUp'
 import $ from 'jquery'
 
+var file = ''
 const firebase = require("firebase");
 // Required for side-effects
 require("firebase/firestore");
@@ -11,8 +14,10 @@ class Admin extends React.Component {
 
     // handle form submission
 
-handleSubmit () {
+handleSubmit (event) {
+    event.preventDefault()
 
+    const storageRef = firebase.storage().ref()
 
     // function to grab all lists in the form
    function getListValues (element, target){
@@ -34,6 +39,7 @@ handleSubmit () {
     // form values
     /* i use let keyword here cuz i wanna get a fresh variable each time 
     this function is invoked */
+    let profileImage = $('#profileImage')
     let name = $('#name').val()
     let title = $('#title').val()
     let summary = $('#summary').val()
@@ -55,11 +61,15 @@ handleSubmit () {
     /* some fields are required like name and tittle 
     so here we wanna first validate and make sure those inputs are provided  */
 
-    if(name === '' || title === '' || summary === '' 
-    || aboutSummary === '' || skillList === '' || hobbies === ''){
+    if(event.target.type === 'file'){
+        // && event.target.files[0].name === ''
+         file = event.target.files[0]
+         console.log(file)
+    }else if(name === '' || title === '' || summary === '' 
+    || aboutSummary === '' || skillList === '' || hobbies === '' || file === ''){
         // if any of the provided checks is empty ? alert user
-
-        alert('Fields Marked Red Are Required !')
+        console.log(file)
+        alert('Fields Marked Red And Profile Picture Are Required !')
     }else {
         // everything looks good so, go ahead and try to upload the profile
 
@@ -115,28 +125,43 @@ handleSubmit () {
         console.log(profileValues)
         
         const db = firebase.firestore()
+        // write profile to database
 
-        // db.collection(name).add({
-        //     profileValues
-        // })
-        // .then(function() {
-        //     console.log("Document successfully written!");
-        // })
-        // .catch(function(error) {
-        //     console.error("Error writing document: ", error);
-        // });
+        db.collection('profiles').add({
+            profileValues
+        })
+        .then(function(result) {
+            // upload image
+            storageRef.child(result.id).put(file).then(function () {
+                console.log('file uploaded....')
+                storageRef.child(result.id).getDownloadURL().then(function (url) {
+                const merge =  db.collection('profiles').doc(result.id).set({
+                        imgUrl: url
+                    }, { merge: true });
+                })
+            })
+            console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
     }
 
     
 }
+
+
     render () {
         return (
             <div>
                 <AdminHeader />
                 <ProfileMaker 
                 handleSubmit = {this.handleSubmit} 
-                />
-                
+                handleUpload = {this.handleImageUpload}/>
+                <div className='container profileOverviewWrapper'>
+                    <ProfileOverview />
+                    {/* <ProfilePopUp />                                   */}
+                </div>
             </div>
         )
     }

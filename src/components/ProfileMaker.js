@@ -7,7 +7,7 @@ class ProfileMaker extends React.Component {
     /* Create a super method that takes any number of argument */
     
     addSection (...args) {
-        // again we use let keyword as we want all variables garbaged collected as func completes
+        // again, we use let keyword as we want all variables garbaged collected as func completes
        let passed =  args.map(elements => {
         //    retrieve the values of the elements passed as argument
             return $(elements).val()
@@ -57,12 +57,12 @@ class ProfileMaker extends React.Component {
                                     </button>
                                 </div>
                                 <div className="modal-body" encType="multipart/form-data">
-                                    <form className='formGroup' onSubmit={()=>console.log('submitting...')} >
+                                    <form className='formGroup'>
                                        <div className='centered'>
                                             <div className='backgroundFix profileImage'>
 
                                             </div>
-                                            <input id='profileImageData' type='file'
+                                            <input onChange={this.props.handleSubmit} id='profileImage' type='file'
                                             accept='.jpg, .jpeg, .png'></input>
                                        </div>
 
@@ -331,11 +331,11 @@ class ProfileMaker extends React.Component {
                                                 
                                             </div>
                                         </div>
+                                        <div className="modal-footer">
+                                        <button type="button" className="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                        <button onClick={this.props.handleSubmit} type="submit" className="btn btn-outline-success">Create Profile</button>
+                                        </div>                                        
                                     </form>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                    <button onClick={this.props.handleSubmit} type="button" className="btn btn-outline-success">Create Profile</button>
                                 </div>
                             </div>
                         </div>
