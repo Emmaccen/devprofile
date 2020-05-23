@@ -10,43 +10,91 @@ class ProfilePopUp extends React.Component {
             <div>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div className='grid2'>
-                            <div style={{backgroundImage : `url(${'/images/home.jpg'})`}} className = 'backgroundFix profileImage'>
-
-                            </div>
-                            <div>
-                                <h2>Oriola Emmanuel Kehinde</h2>
-                                <h3>Full Stack Web Developer</h3>
-                                <p>
-                                Life won't always go as planned, and you'll encounter lots of challenges along the way, but never give up on your dreams.
-                                Life won't always go as planned.
-                                </p>
-
-                            </div>
-                        </div>
-                        {/* <hr></hr> */}
-
-                        <div className='grid2'>
-                            <div>
-                                Education here
-                            </div>
-                            <div>
-                                Experience here
-                            </div>
-                        </div>
+                    <div class="modal-content profileWrapper">
                         <div>
-                            
-                        </div>
-                        <div className='grid2'>
-                            <div>
-                                Skilss here
-                            </div>
-                            <div>
-                                Hobbies here
+                            <div className='profileTopSectionWrapper'>
+                                <div id='popImg' className='backgroundFix popImage'>
+
+                                </div>
+                                <div>
+                                    <h1 id='popName'></h1>
+                                    <h2 id='popTitle'></h2>
+                                    <p id='popSummary'></p>
+                                    {/* <div>
+                                        <ul  id='popMedia'>
+                                            
+                                        </ul>
+                                     </div> */}
+                                </div>
                             </div>
                         </div>
 
+                        <div className='grid2 spacer'>
+                            <div className='headingSection'>
+                                <h2>Education</h2>
+                                <ul id='popEducation'>
+                                    
+                                </ul>
+                            </div>
+                            <div>
+                                <h2>Experience</h2>
+                                <ul id='popExperience'>
+                                        
+                                </ul>
+                            </div>
+                        </div>
+                        <div className='spacer'>
+                            <div>
+                                <h2>About</h2>
+                            </div>
+                            <div className='spacer2' >
+                                <h4>What I Do</h4>
+                                <p id='popDo'></p>
+                            </div>
+                            <div className='spacer2'>
+                                <h4>Archievements</h4>
+                                <p id='popArchievement'></p>
+                            </div>
+                            <div>
+                                <h4>Skills</h4>
+                                <p id='popSkills'></p>
+                            </div>
+                            <div>
+                                <h4>Hobbies</h4>
+                                <p id='popHobbies'></p>
+                            </div>
+                        </div>
+
+                        <div className='spacer2'>
+                            <h2>Soft Skils</h2>
+                            <div>
+                                <div id='popSoft'>
+                                    <label>Photography 85%</label>
+                                    <progress value="85" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='spacer'>
+                            <h2>Projects And Media</h2>
+                            <div className='spacer2'>
+                                <h4>Projects</h4>
+                                <ul id='popProjects'>
+
+                                </ul>
+                            </div>
+                            <div className='spacer2'>
+                                <h4>Media</h4>
+                                <ul id='popMedia'>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-danger">Delete Profile</button>
+                            <button type="button" class="btn btn-outline-success">Update Profile</button>
+                        </div>
                     </div>
                 </div>
                 </div> 

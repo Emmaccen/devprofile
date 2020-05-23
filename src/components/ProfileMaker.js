@@ -30,6 +30,10 @@ class ProfileMaker extends React.Component {
            // get the first element so we can populate it with lists
            let newSection = $(args[0])
            let newLists = document.createElement('li');
+           newLists.setAttribute('title', 'Remove')
+           newLists.addEventListener('click', event => {
+               $(event.target).remove()
+           })
            // add the values to the new list
            newLists.innerHTML = values
            newSection.append(newLists)
@@ -56,8 +60,8 @@ class ProfileMaker extends React.Component {
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div className="modal-body" encType="multipart/form-data">
-                                    <form className='formGroup'>
+                                <div className="modal-body">
+                                    <form encType="multipart/form-data" className='formGroup'>
                                        <div className='centered'>
                                             <div className='backgroundFix profileImage'>
 
@@ -222,9 +226,9 @@ class ProfileMaker extends React.Component {
                                                 <label>SOFT SKILLS</label>
                                                 <div className='softSkillsWrapper'>
                                                     <div className='rating'>
-                                                        <label>Time Management</label>
+                                                        <label>TIME MANAGEMENT</label>
                                                         <select id='timeManagement' className='form-control'>
-                                                            <option>Rating(%)</option>
+                                                            <option></option>
                                                             <option>10%</option>
                                                             <option>20%</option>
                                                             <option>30%</option>
@@ -240,7 +244,7 @@ class ProfileMaker extends React.Component {
                                                     <div className='rating'>
                                                         <label>TEAM WORK</label>
                                                         <select id='teamWork' className='form-control'>
-                                                            <option>Rating(%)</option>
+                                                            <option></option>
                                                             <option>10%</option>
                                                             <option>20%</option>
                                                             <option>30%</option>
@@ -256,7 +260,7 @@ class ProfileMaker extends React.Component {
                                                     <div className='rating'>
                                                         <label>COMMUNICATION</label>
                                                         <select id='communication' className='form-control'>
-                                                            <option>Rating(%)</option>
+                                                            <option></option>
                                                             <option>10%</option>
                                                             <option>20%</option>
                                                             <option>30%</option>
@@ -272,7 +276,7 @@ class ProfileMaker extends React.Component {
                                                     <div className='rating'>
                                                         <label>PERFORMANCE UNDER PRESSURE</label>
                                                         <select id='performance' className='form-control'>
-                                                            <option>Rating(%)</option>
+                                                            <option></option>
                                                             <option>10%</option>
                                                             <option>20%</option>
                                                             <option>30%</option>
@@ -288,7 +292,7 @@ class ProfileMaker extends React.Component {
                                                     <div className='rating'>
                                                         <label>CONFLICT RESOLUTION</label>
                                                         <select id='conflictResolution' className='form-control'>
-                                                            <option>Rating(%)</option>
+                                                            <option></option>
                                                             <option>10%</option>
                                                             <option>20%</option>
                                                             <option>30%</option>

@@ -160,7 +160,7 @@ handleSubmit (event) {
                 handleUpload = {this.handleImageUpload}/>
                 <div className='container profileOverviewWrapper'>
                     <ProfileOverview />
-                    {/* <ProfilePopUp />                                   */}
+                    <ProfilePopUp />                              
                 </div>
             </div>
         )

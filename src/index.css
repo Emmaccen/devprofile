@@ -2,7 +2,11 @@
 
 :root{
   --primary : #007bff;
-  /* --outline : #28a745; */
+  --outline : #28a745;
+  --main: #0D0F35;
+  --mai: #090a2b;
+  --white: #ffffff;
+  --ease: all 0.3s ease 0s;
 }
 * {
   box-sizing: border-box;
@@ -24,11 +28,227 @@ body {
   align-items: center;
   text-align: center;
 }
+.descriptionText, p {
+  font-size: 23px;
+  line-height: 1.2em;
+  color : #666;
+  font-family: cursive;
+}
 .backgroundFix {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+
+progress {
+	/*first remove the default progress looks of all browsers*/
+	-webkit-appearance : none ;
+	-moz-appearance : none;/*for moz-firefox*/
+	appearance : none;
+}
+/*lets create a general rule style for progress*/
+progress {
+	height : 5px;
+	background: #dfdfdf;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+	border-radius: 5px;
+	min-width: 95%;
+  color : var(--outline);
+}
+
+/*now lets style the progress anyhow we want(having disabled the default looks*/
+
+progress::-webkit-progress-bar {
+	/*for Chrome and Safari*/
+	height : 5px;
+	background: #dfdfdf;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+	border-radius: 5px;
+}
+progress::-webkit-progress-value {
+  /*color for the values.... orange like color*/
+	background-color: var(--outline);
+	border-radius: 5px;
+}
+progress::-moz-prgress-bar {
+	/*For Mozilla Firefox*/
+	background-color: var(--outline);
+	border-radius: 5px;
+}
+
+li {
+  cursor: pointer;
+  padding : 5px;
+  background-color: rgba(40, 167, 69, .9);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.formGroup li::after {
+  content: 'Click To Remove';
+  font-size: 10px;
+  padding-left: 5px;
+  color : red;
+}
+.spacer {
+  width: 90%;
+  margin : auto;
+}
+.spacer2 {
+  width: 95%;
+  margin : auto;
+}
+/* Homepage style section */
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.mainHead {
+  position: relative;
+  background-image: url('/images/freelance.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  padding: 3em;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+ .subHead {
+  background-image: url('/images/freelance.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.home h2 {
+color: var(--white);
+font-size: 40px;
+font-family: 'Monserrat';
+text-transform: uppercase;
+}
+
+.home p {
+color: var(--white);
+font-size: 20px;
+font-family: 'Oswald';
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 2em;
+}
+
+.card1 {
+  background-image: url('/images/em.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  border-style: none;
+  text-align: center;
+  width: 20%;
+  height: 40%;
+  margin-top: 13em;
+}
+
+.card2 {
+  background-image: url('/images/nina.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  border-style: none;
+  text-align: center;
+  width: 20%;
+  height: 40%;
+  margin-top: 13em;
+}
+
+.card3 {
+  background-image: url('/images/dreyy.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  border-style: none;
+  text-align: center;
+  width: 20%;
+  height: 40%;
+
+  margin-top: 13em;
+}
+
+.card4 {
+  background-image: url('/images/nioa.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  border-style: none;
+  text-align: center;
+  width: 20%;
+  height: 40%;
+  margin-top: 13em;
+}
+
+.home h3{
+  font-size: 12px;
+  color: var(--white);
+  padding-top: 12em;
+}
+
+#showcase {
+  font-size: 12px;
+  padding-top: 1px;
+}
+
+.enroll {
+    display: block;
+    text-align: center;
+    padding-bottom: 10em;
+}
+
+.enroll h3 {
+  font-size: 25px;
+  font-family: "Bebas Neue";
+  color: var(--main);
+}
+
+
+.home .button {
+  width: 200px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+}
+
+.home .button span {
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.4s;
+  position: relative;
+}
+
+.home .button:hover span {
+  padding-right: 20px;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
 button, input, textarea {
   
 }
@@ -54,8 +274,7 @@ button, input, textarea {
 .homepageContainer {
   width: 100%;
   height : 700px;
-  background-image: url(/images/home.jpg);
-
+  background-image: url('/images/home.jpg');
 }
 
 /* .section {
@@ -107,12 +326,12 @@ input , label {
 
 /* profile style section */
 
-.profileImage {
+.formGroup .profileImage {
   width: 190px;
   height: 190px;
   margin-bottom: 10px;
   border-radius: 50%;
-  /* background : linear-gradient(rgba(0, 0, 255, .4), rgba(0,255,0,.5)); */
+  background : linear-gradient(rgba(0, 0, 255, .4), rgba(0,255,0,.5));
 }
 .profileOverviewWrapper .createdProfiles {
   display: grid;
@@ -132,4 +351,32 @@ input , label {
 .section3 textarea {
   height: 100px;
   resize: none;
+}
+
+/* profile popup style section */
+
+.profileWrapper  p{
+  padding-left : 15px;
+}
+
+.profileTopSectionWrapper {
+  width : 90%;
+  margin : auto;
+  padding : 20px 0px;
+  display: grid;
+  gap : 20px;
+  grid-template-columns: 1fr 2fr;
+}
+.profileTopSectionWrapper p {
+  font-size: 23px;
+}
+.profileTopSectionWrapper ul {
+  
+}
+
+.popImage {
+  width: 250px;
+  height: 250px;
+  /* margin-bottom: 10px; */
+  border-radius: 50%;
 }
