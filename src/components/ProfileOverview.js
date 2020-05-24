@@ -34,8 +34,9 @@ function FetchList (data,id) {
          }
     })
     }
-    // console.log(data)
+    
 }
+
 function viewProfile (props) {
 
     const {data} = props
@@ -53,14 +54,7 @@ function viewProfile (props) {
     FetchList(data.experience,'#popExperience');
     FetchList(data.softSkills,'#popSoft');
     FetchList(data.projects,'#popProjects');
-    console.log('>>>>>', data)
-
-    /*
-    {aboutSummary: "Am a Front-End developer making his way to Full-St…cript, HTML5, CSS3, JQuery and UI/UX using Figma.", media: Array(1), 
-    summary: "Am a software developer with a thriving passion for technology and its use cases in the real world.", 
-    softSkills: Array(5), education: Array(2), …}aboutSummary: "Am a Front-End developer making his way to Full-Stack and Currently growing my career in the echo system. I currently build web applications using Frameworks like React.js, and am experienced with JavaScript, HTML5, CSS3, JQuery and UI/UX using Figma."archievementSummary: "While Going through my journey as software developer, I've engaged and made a habit of working on real world projects, such as building applications for neighbors, nearby companies and startups.↵Am always driven to create values and improve the lives of people around me."education: (2) ["Harvard,Computer Science,2020", "oxford,medicine,2024"]experience: (2) ["ArtCab,Web Developer,2020", "Echo Digital,Web Developer,2020"]
-    hobbies: "Music Blogging"id: "K0nKPqGfwDYi8DquGk6e"media: ["GitHub,http://github.com/"]name: "Emmanuel Oriola"projects: []skillList: "React, java"softSkills: (5) ["80%", "90%", "80%", "70%", "80%"]summary: "Am a software developer with a thriving passion for technology and its use cases in the real world."title: "Full stack Web Developer"url: "https://firebasestorage.googleapis.com/v0/b/devlookup.appspot.com/o/K0nKPqGfwDYi8DquGk6e?alt=media&token=e69da338-b5c8-40db-a8d8-74d683e2c461"__proto__: Object
-     */
+    
 }
 
 function ProfileList (props) {
@@ -85,31 +79,29 @@ class ProfileOverview extends Component {
             values : []
         }
     }
-    
-// get all database's profiles 
 
+// get all database's profiles 
+updateState(){
+const db = firebase.firestore()
+const  result = []
+db.collection("profiles").get()
+.then(querySnapshot => {
+    querySnapshot.forEach(function(doc) {
+        let val = doc.data().profileValues
+        let url = doc.data().imgUrl
+        // add the unique id to the object
+        val.id = doc.id
+        // add link to url
+        val.url = url
+        result.push(val)
+        
+    });
+    // pull values out
+    this.setState({values : result})
+});
+}
     componentDidMount () {
-        // const storageRef = firebase.storage()
-        const db = firebase.firestore()
-        const  result = []
-       db.collection("profiles").get()
-        .then(querySnapshot => {
-            querySnapshot.forEach(function(doc) {
-                let val = doc.data().profileValues
-                let url = doc.data().imgUrl
-                // add the unique id to the object
-                val.id = doc.id
-                // add link to url
-                val.url = url
-                result.push(val)
-                console.log(val)
-            });
-            // pull values out
-            this.setState({values : result})
-            // db.collection("profiles").doc().onSnapshot(function(data) {
-            //     console.log(data.data())
-            // })
-        });
+       this.updateState()
     }
 
     render () {
@@ -123,7 +115,6 @@ class ProfileOverview extends Component {
                 data = {details}
             />
         })
-        // console.log('profiles.........',grabValues)
         return (
             <div className='createdProfiles'>
                {profiles}

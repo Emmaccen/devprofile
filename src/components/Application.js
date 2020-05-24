@@ -21,20 +21,6 @@ require("firebase/firestore");
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-
-
-// firebase.auth().onAuthStateChanged((user) =>  {
-//     if (user) {
-//       // User is signed in.
-//     //   this.setState({ isLoggedIn : true })
-//       alert('isLoggedIn')
-//     } else {
-//       // User is signed out.
-//     //   this.setState({ isLoggedIn : false })
-//       console.log('logged out')
-//     }
-//   })
-
 class Application extends Component {
 
     constructor(props) {

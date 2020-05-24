@@ -20,11 +20,6 @@ class ProfilePopUp extends React.Component {
                                     <h1 id='popName'></h1>
                                     <h2 id='popTitle'></h2>
                                     <p id='popSummary'></p>
-                                    {/* <div>
-                                        <ul  id='popMedia'>
-                                            
-                                        </ul>
-                                     </div> */}
                                 </div>
                             </div>
                         </div>
@@ -92,7 +87,7 @@ class ProfilePopUp extends React.Component {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-outline-danger">Delete Profile</button>
+                            <button type="button"  class="btn btn-outline-danger">Delete Profile</button>
                             <button type="button" class="btn btn-outline-success">Update Profile</button>
                         </div>
                     </div>

@@ -15,8 +15,7 @@
 
 body {
   margin: 0;
-  font-family: 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Noto Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,10 +28,10 @@ body {
   text-align: center;
 }
 .descriptionText, p {
-  font-size: 23px;
+  font-size: 20px;
   line-height: 1.2em;
   color : #666;
-  font-family: cursive;
+  
 }
 .backgroundFix {
   background-size: cover;
@@ -136,14 +135,14 @@ li {
 .home h2 {
 color: var(--white);
 font-size: 40px;
-font-family: 'Monserrat';
+
 text-transform: uppercase;
 }
 
 .home p {
 color: var(--white);
 font-size: 20px;
-font-family: 'Oswald';
+
 }
 
 .cards {
@@ -204,7 +203,7 @@ font-family: 'Oswald';
 
 .home h3{
   font-size: 12px;
-  color: var(--white);
+  color : whitesmoke;
   padding-top: 12em;
 }
 
@@ -221,8 +220,8 @@ font-family: 'Oswald';
 
 .enroll h3 {
   font-size: 25px;
-  font-family: "Bebas Neue";
-  color: var(--main);
+  
+  color : whitesmoke;
 }
 
 
@@ -277,13 +276,6 @@ button, input, textarea {
   background-image: url('/images/home.jpg');
 }
 
-/* .section {
-  width: 95%;
-  margin : auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-} */
-
 /* create profile section style */
 
 .required::after {
@@ -335,7 +327,7 @@ input , label {
 }
 .profileOverviewWrapper .createdProfiles {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin-top: 100px;
 }

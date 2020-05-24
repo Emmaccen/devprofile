@@ -81,33 +81,8 @@ handleSubmit (event) {
     getListValues('#mediaList', mediaList)
 
     console.log(education,experience,projectList,mediaList)
-    // ============================
-
-    // let collegeName = $('#collegeName').val()
-    // let discipline = $('#discipline').val()
-    // let graduationYear = $('#graduationYear').val()
-
-    // =============================
-
-    // let companyName = $('#companyName').val()
-    // let jobRole = $('#jobRole').val()
-    // let employmentYear = $('#employmentYear').val()
-
-    // let jobSummary = $('#jobSummary').val()
- 
-
-    // let projectName = $('#projectName').val()
-    // let projectUrl = $('#projectUrl').val()
-    // let mediaHandles = $('#mediaHandles').val()
-    // let mediaUrl = $('#mediaUrl').val()
-
-    // console.log(name,title,summary,collegeName,discipline,graduationYear,companyName
-    //     ,jobRole,employmentYear,jobSummary, aboutSummary,archievementSummary,skillList,
-    //     hobbies,timeManagement,teamWork,communication,conflictResolution,performance,
-    //     projectName,projectUrl,mediaHandles,mediaUrl)
-
     
-        const profileValues = {
+    const profileValues = {
             name : name,
             title : title,
             summary : summary,
