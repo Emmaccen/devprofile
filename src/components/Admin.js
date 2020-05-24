@@ -12,6 +12,88 @@ require("firebase/firestore");
 
 class Admin extends React.Component {
 
+    constructor () {
+        super ()
+        this.state = {
+            values : []
+        }
+        this.updateState = this.updateState.bind(this)
+        this.deleteProfile = this.deleteProfile.bind(this)
+        this.updateProfile = this.updateProfile.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.searchProfile = this.searchProfile.bind(this)
+    }
+
+    deleteProfile(event) {
+        let db = firebase.firestore()
+        let id = $(event.target).attr('id')
+        db.collection('profiles').doc(id).delete().then( () => {
+            console.log('<<<<<<<<<<<<    deleted    >>>>>>>>>>>>>>')
+            $('.closeBtn').click()
+            this.updateState()
+        })
+        
+    }
+
+
+    updateProfile (event) {
+        let id = $(event.target).attr('id')
+        this.updateState()
+        
+    }
+
+        // get all database's profiles 
+    updateState (){
+    const db = firebase.firestore()
+    const  result = []
+    db.collection("profiles").get()
+    .then(querySnapshot => {
+        querySnapshot.forEach(function(doc) {
+            let val = doc.data().profileValues
+            let url = doc.data().imgUrl
+            // add the unique id to the object
+            val.id = doc.id
+            // add link to url
+            val.url = url
+            result.push(val)
+            
+        });
+        // pull values out
+        this.setState({values : result})
+    });
+
+}
+
+searchProfile () {
+    const  result = []
+    let searchQuery = $('.search').val()
+    console.log(searchQuery,'input')
+    console.log('searching....')
+    let db = firebase.firestore()
+    db.collection('profiles').get().then( docs => {
+        docs.forEach( doc => {
+            let value = doc.data().profileValues
+            let url = doc.data().imgUrl
+            if(value.name.toLowerCase() === searchQuery.toLowerCase()){
+                // found a matching name
+                 // add the unique id to the object
+            value.id = doc.id
+            // add link to url
+            value.url = url
+            result.push(value)
+            }else {
+                // no match bruver ! :)
+            }
+            this.setState({values : result})
+         })
+    })
+
+}
+
+    componentDidMount () {
+        this.updateState()
+     }
+
     // handle form submission
 
 handleSubmit (event) {
@@ -105,17 +187,19 @@ handleSubmit (event) {
         db.collection('profiles').add({
             profileValues
         })
-        .then(function(result) {
+        .then( result => {
             // upload image
-            storageRef.child(result.id).put(file).then(function () {
+            storageRef.child(result.id).put(file).then(() => {
                 console.log('file uploaded....')
-                storageRef.child(result.id).getDownloadURL().then(function (url) {
+                storageRef.child(result.id).getDownloadURL().then( url => {
                 const merge =  db.collection('profiles').doc(result.id).set({
                         imgUrl: url
                     }, { merge: true });
                 })
             })
             console.log("Document successfully written!");
+            $('.closeBtn').click()
+            this.updateState()
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -125,17 +209,25 @@ handleSubmit (event) {
     
 }
 
-
     render () {
         return (
             <div>
-                <AdminHeader />
+                <AdminHeader 
+                search = {this.searchProfile}
+                updateState = {this.updateState}
+                />
                 <ProfileMaker 
                 handleSubmit = {this.handleSubmit} 
-                handleUpload = {this.handleImageUpload}/>
+                handleUpload = {this.handleImageUpload}
+                />
                 <div className='container profileOverviewWrapper'>
-                    <ProfileOverview />
-                    <ProfilePopUp />                              
+                    <ProfileOverview 
+                    data = {this.state.values}
+                    />
+                    <ProfilePopUp
+                    delete = {this.deleteProfile}
+                    update = {this.updateProfile}
+                    />                              
                 </div>
             </div>
         )

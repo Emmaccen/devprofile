@@ -20,6 +20,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.nav-link {
+  cursor: pointer;
+}
 .centered {
   display: flex;
   flex-direction: column;

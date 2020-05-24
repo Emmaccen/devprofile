@@ -3,14 +3,17 @@ import React from 'react'
 
 class ProfilePopUp extends React.Component {
 
+    constructor(props) {
+        super(props)
+    }
 
     render () {
         
         return (
             <div>
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content profileWrapper">
+                <div className="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content profileWrapper">
                         <div>
                             <div className='profileTopSectionWrapper'>
                                 <div id='popImg' className='backgroundFix popImage'>
@@ -85,10 +88,12 @@ class ProfilePopUp extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                            <button type="button"  class="btn btn-outline-danger">Delete Profile</button>
-                            <button type="button" class="btn btn-outline-success">Update Profile</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn closeBtn btn-outline-dark" data-dismiss="modal">Close</button>
+                            <button
+                            onClick={this.props.delete} type="button"  className="btn deleteProfileButton btn-outline-danger">Delete Profile</button>
+                            <button
+                            onClick={this.props.update} type="button" className="btn updateProfileButton btn-outline-success">Update Profile</button>
                         </div>
                     </div>
                 </div>

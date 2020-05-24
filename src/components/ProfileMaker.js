@@ -336,7 +336,7 @@ class ProfileMaker extends React.Component {
                                             </div>
                                         </div>
                                         <div className="modal-footer">
-                                        <button type="button" className="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                        <button type="button" className="closeBtn btn btn-danger" data-dismiss="modal">Cancel</button>
                                         <button onClick={this.props.handleSubmit} type="submit" className="btn btn-outline-success">Create Profile</button>
                                         </div>                                        
                                     </form>

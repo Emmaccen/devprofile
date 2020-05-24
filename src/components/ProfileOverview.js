@@ -54,6 +54,11 @@ function viewProfile (props) {
     FetchList(data.experience,'#popExperience');
     FetchList(data.softSkills,'#popSoft');
     FetchList(data.projects,'#popProjects');
+
+    // send the unique id of this particular profile to update and delete buttons
+    $('.deleteProfileButton').attr('id',data.id);
+    $('.updateProfileButton').attr('id',data.id);
+    
     
 }
 
@@ -73,39 +78,15 @@ function ProfileList (props) {
 
 class ProfileOverview extends Component {
 
-    constructor() {
-        super() 
-        this.state = {
-            values : []
-        }
+    constructor(props) {
+        super(props) 
+       
     }
 
-// get all database's profiles 
-updateState(){
-const db = firebase.firestore()
-const  result = []
-db.collection("profiles").get()
-.then(querySnapshot => {
-    querySnapshot.forEach(function(doc) {
-        let val = doc.data().profileValues
-        let url = doc.data().imgUrl
-        // add the unique id to the object
-        val.id = doc.id
-        // add link to url
-        val.url = url
-        result.push(val)
-        
-    });
-    // pull values out
-    this.setState({values : result})
-});
-}
-    componentDidMount () {
-       this.updateState()
-    }
 
     render () {
-        const grabValues = this.state.values
+        console.log('profile >>>>>>>>>>> ', this.props.data)
+        const grabValues = this.props.data
         const profiles = grabValues.map(details => {
             return < ProfileList 
                 name = {details.name}
@@ -113,6 +94,7 @@ db.collection("profiles").get()
                 id = {details.id}
                 url = {details.url}
                 data = {details}
+                text = {this.props.text}
             />
         })
         return (

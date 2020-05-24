@@ -5,6 +5,12 @@ const firebase = require("firebase");
 
 class AdminHeader extends React.Component {
 
+    constructor(props) {
+
+        super(props)
+    }
+
+
     logOutUser (button, loader) {
         const load = document.getElementById('loader')
         const btn = document.getElementById('logout')
@@ -41,12 +47,13 @@ class AdminHeader extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav mr-auto ml-5">
-                            <a className="nav-item nav-link active" href="#">Profiles <span className="sr-only">(current)</span></a>
-                            <a className="nav-item nav-link" href="#">Admins</a>
+                            <a onClick={this.props.updateState} className="nav-item nav-link active">Profiles <span className="sr-only">(current)</span></a>
+                            <a className="nav-item nav-link">Admins</a>
                         </div>
+                        {/* ================== */}
                         <form onSubmit={e => e.preventDefault()} className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search"></input>
-                            <button  className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Profile</button>
+                            <input className="form-control mr-sm-2 search" type="search" placeholder="Search By Name" aria-label="Search"></input>
+                            <button onClick={this.props.search}  className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Profile</button>
                         </form>
                         <button className="btn btn-outline-success my-2 my-sm-0 ml-5" data-toggle="modal" data-target="#exampleModalLong">Create Profile</button>
                         <button
