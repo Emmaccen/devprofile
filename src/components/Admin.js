@@ -74,7 +74,7 @@ searchProfile () {
         docs.forEach( doc => {
             let value = doc.data().profileValues
             let url = doc.data().imgUrl
-            if(value.name.toLowerCase() === searchQuery.toLowerCase()){
+            if(value.name.toLowerCase().trim() === searchQuery.toLowerCase().trim()){
                 // found a matching name
                  // add the unique id to the object
             value.id = doc.id

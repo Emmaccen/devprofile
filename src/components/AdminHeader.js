@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const firebase = require("firebase");
 
@@ -6,7 +7,6 @@ const firebase = require("firebase");
 class AdminHeader extends React.Component {
 
     constructor(props) {
-
         super(props)
     }
 
@@ -47,8 +47,13 @@ class AdminHeader extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav mr-auto ml-5">
-                            <a onClick={this.props.updateState} className="nav-item nav-link active">Profiles <span className="sr-only">(current)</span></a>
+                            <Link to='/'>
+                                <a onClick={this.props.updateState} className="nav-item nav-link active">Profiles <span className="sr-only">(current)</span></a>
+                            </Link>
                             <a className="nav-item nav-link">Admins</a>
+                            <Link to='/Content'>
+                                <a className="nav-item nav-link">Content</a>
+                            </Link>
                         </div>
                         {/* ================== */}
                         <form onSubmit={e => e.preventDefault()} className="form-inline my-2 my-lg-0">
