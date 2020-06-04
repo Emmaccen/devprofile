@@ -8,6 +8,7 @@
   --white: #ffffff;
   --ease: all 0.3s ease 0s;
 }
+
 * {
   box-sizing: border-box;
   transition: .5s all ease;
@@ -82,7 +83,6 @@ progress::-moz-prgress-bar {
 li {
   cursor: pointer;
   padding : 5px;
-  background-color: rgba(40, 167, 69, .9);
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -374,4 +374,26 @@ input , label {
   height: 250px;
   /* margin-bottom: 10px; */
   border-radius: 50%;
+}
+
+/* content page stle */
+
+.sticky {
+  position: fixed;
+  height: 100%;
+  left: 0px;
+  right: 75%;
+  overflow: hidden;
+  padding : 30px 20px;
+}
+.sticky ul {
+  list-style: decimal;
+}
+.content {
+  position: fixed;
+  right : 0px;
+  left: 25%;
+  height: 100%;
+  overflow-y: scroll;
+  padding : 30px 10px;
 }
