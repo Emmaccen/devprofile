@@ -8,21 +8,17 @@
   --white: #ffffff;
   --ease: all 0.3s ease 0s;
 }
+
 * {
   box-sizing: border-box;
   transition: .5s all ease;
 }
-.icon {
-  margin-right: 10px;
-  color : var(--primary);
-}
 
 body {
   margin: 0;
-  font-family: 'Laila';
+  font-family: 'Noto Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: whitesmoke;
 }
 
 .nav-link {
@@ -46,255 +42,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-.relative {
-  position: relative;
-}
-.highlight{
-  color : var(--primary);
-  font-weight: 900;
-  margin-left: 3px;
-}
-.container {
-  width: 80%;
-  margin : auto;
-}
-.container2 {
-  width: 70%;
-  margin : auto;
-}
-
-
-
-
-/* Login form style section */
-.loginWrapper {
-  display: none;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top:0; left:0;
-  z-index: 10;
-}
-.loginDialoge {
-  position: relative;
-  background-color: white;
-  width : 35%;
-  height: auto;
-  border-radius: 5px;
-  padding : 30px;
-}
-.loginDialoge button {
-  margin-top: 10px;
-  width: 100%;
-}
-.formError {
-  color : red;
-  font-size: 15px;
-}
-.formCloseBtn {
-  position: absolute;
-  top : 50px;
-  right : 50px;
-  color : var(--primary);
-  font-size: 30px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-
-/* Home section style  */
-/* .homeCover {
-  display: none;
-} */
-.homeBg::before {
-  position: absolute;
-  content: '';
-  top : 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
-}
-.homeBg {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background-image: url('/images/freelance.jpg');
-  background-attachment: fixed;
-}
-
-/* intro Text section */
-.introTextContainer {
-  position: absolute;
-  padding : 10px;
-  color : whitesmoke !important;
-  display: flex;
-  width: 35%;
-  flex-direction: column;
-  margin-left: 100px;
-  top  : 25%;
-}
-.introTextContainer h1 {
-  margin : 0px;
-  padding : 0px;
-  font-size: 40px;
-}
-.introTextContainer p {
-  font-size: 140%;
-  line-height: 30px;
-  margin-top : 20px;
-  margin-bottom: 0px;
-}
-.fadeText {
-  color : #6c757d !important;
-}
-.introTextContainer span {
-  margin : 0px 10px 0px 10px;
-}
-.introTextContainer button {
-  margin-top: 15px;
-}
-
-
-/* meet the bosses Section */
-
-.bosses{
-  margin: 100px  0px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.bossContent{
-  margin : auto;
-  line-height: 1.2em;
-  font-size: 18px;
-  width: 100%;
-  height: 100%;
-}
-.bossContent .holder{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  margin-left : 20px;
-}
-
-.bossHeader h1, h2, h3, h4 {
-  font-weight: 100;
-}
-
-.bosses .sideImg img{
-  width: 100%;
-  height: 530px;
-  border-radius: 5px;
-}
-
-/* Explore section style */
-
-.exploreContainer {
-  margin-bottom: 150px;
-}
-.exploreContainer p {
-  padding : 0px 30px;
-}
-.exploreContainer .cardContainer {
-  background-color: white;
-  padding: 10px;
-  margin : 20px;
-}
-.exploreContainer .cardContainer .descriptionText2 {
-  /* color : rgb(170,170,170); */
-}
-.exploreContainer .cardContainer span {
-  margin : 0px 10px 0px 0px;
-  color : var(--primary);
-  font-size: 150%;
-}
-.exploreContainer{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.exploreContainer .cardContainer:hover {
-  box-shadow: 3px 3px 10px 3px #888888;
-  cursor: pointer;
-}
-
-/* Talents just a step away style section */
-
-/* blog section */
-#devHeader  {
-  width: 40%;
-  margin-bottom: 50px;
-  font-weight: 400;
-}
-.devContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 200px;
-}
-.devs, .addressBg {
-  background-color: white;
-}
-.devTextContainer {
-  padding : 0px 20px 10px 20px;
-}
-.devTextContainer h2 {
-  color : var(--primary);
-}
-.devs{
-  border-radius: 10px;
-}
-.blogsBg {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width : 100%;
-  height: 300px;
-}
-.devs .readMore {
-  color : var(--iconColor);
-}
-.devs:hover {
-  box-shadow: 3px 3px 10px 3px #888888;
-  cursor: pointer;
-}
-.devs h2:hover > a {
-  transition: .5s all ease;
-  color : var(--iconColor) !important;
-}
-
-
-
-/* Message Notification style Section */
-
-.notificationContainer {
-  position: fixed;
-  background-color: #343a40;
-  width: auto;
-  margin : auto;
-  padding : 10px 15px;
-  border-radius: 10px;
-  z-index: 1000;
-  bottom : -50px;
-  left: 20px;
-}
-.notificationContainer p {
-  color : whitesmoke !important;
-  margin : 0px;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 progress {
@@ -334,7 +81,9 @@ progress::-moz-prgress-bar {
 }
 
 li {
-  font-size: 15px;
+  cursor: pointer;
+  padding : 5px;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 .formGroup li::after {
@@ -347,13 +96,12 @@ li {
   width: 90%;
   margin : auto;
 }
-/*
 .spacer2 {
   width: 95%;
   margin : auto;
-} */
-/* Homepage style section
-/* 
+}
+/* Homepage style section */
+
 .home {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -499,7 +247,7 @@ font-size: 20px;
 
 .home .button:hover span {
   padding-right: 20px;
-} */ 
+}
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -542,7 +290,7 @@ form p {
 }
 input , label {
   display: block;
-  margin : 8px 0px;
+  margin : 5px 0px;
 }
 .section2 textarea {
   resize: none;
@@ -583,13 +331,12 @@ input , label {
 .profileOverviewWrapper .createdProfiles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 40px;
   margin-top: 100px;
 }
 .profileCard {
   width: 100%;
   text-align: center;
-  margin-bottom: 50px;
 }
 .overviewImage {
   width: 100%;
@@ -601,115 +348,52 @@ input , label {
   resize: none;
 }
 
-
-
 /* profile popup style section */
 
-.heading {
-  font-size: 25px;
-  font-weight: 800;
-  padding : 10px 0px 0px 10px;
-}
-.newSection {
-  padding-top: 50px;
-  font-weight: 900;
-}
-.liner {
-  position: absolute;
-  content: '';
-  width: 60%;
-  height: 2px;
-  background-color: var(--primary);
-  top:0px;right : 20%;
-  margin-top: 30px;
-}
-.subHeading {
-  font-weight: 800;
-  font-size: 20px;
-}
-.progressHeading {
-  font-weight: 800;
-  font-size: 15px;
-}
-.profileWrapper {
-  width : 55%;
-  margin : 100px auto;
-  border-radius: 10px;
-  padding : 3% 3%;
-  box-shadow: 3px 5px 10px 3px #888888;
-  background: linear-gradient(rgba(0, 123, 255, 1), rgba(189,33,48,1), 
-  rgba(7,255,26,.5), rgb(173, 20, 87,.2));
+.profileWrapper  p{
+  padding-left : 15px;
 }
 
 .profileTopSectionWrapper {
-  padding : 20px 5px;
+  width : 90%;
+  margin : auto;
+  padding : 20px 0px;
   display: grid;
   gap : 20px;
   grid-template-columns: 1fr 2fr;
-  background-color: whitesmoke;
-  margin-bottom: 30px;
-  border-radius: 10px;
-}
-.profileTopSectionWrapper h1 {
-  font-size: 40px;
-  font-weight: 800;
-}
-.profileTopSectionWrapper h2 {
-  font-size: 20px;
-  font-weight: 800;
-  border-bottom: 2px solid var(--primary);
 }
 .profileTopSectionWrapper p {
-  font-size: 20px;
+  font-size: 23px;
 }
-.floated {
-  background-color: white;
-  box-shadow: 3px 5px 10px 2px #888888;
-  border-radius: 10px;
+.profileTopSectionWrapper ul {
+  
 }
-.floated:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  box-shadow: 3px 5px 10px 5px #888888;
-}
-.aboutSection .floated{
- padding : 10px;
- margin : 20px;
-}
-.aboutSection p {
-  font-size: 18px;
-  line-height: 1.3em;
-}
-.projectSection {
-  margin-bottom: 50px;
-}
-.projectSection li{
-  background-color: white;
-  box-shadow: 3px 5px 10px 2px #888888;
-  border-radius: 10px;
-  padding : 12px;
-  font-weight: 600;
-}
-.projectSection .icon {
-  margin-left: 10px;
-}
-.projectSection li:nth-child(even) {
-  margin-left: -60px;
-  margin-right: 60px;
-}
-.projectSection li > a {
-  font-weight: 400;
-}
-.projectSection a {
-  display: block;
-  color : var(--primary);
-}
-.modal-footer {
-  padding-top: 20px;
-}
+
 .popImage {
   width: 250px;
   height: 250px;
   /* margin-bottom: 10px; */
   border-radius: 50%;
+}
+
+/* content page stle */
+
+.sticky {
+  position: fixed;
+  height: 100%;
+  left: 0px;
+  right: 75%;
+  overflow: hidden;
+  padding : 30px 20px;
+}
+.sticky ul {
+  list-style: decimal;
+}
+.content {
+  position: fixed;
+  right : 0px;
+  left: 25%;
+  height: 100%;
+  overflow-y: scroll;
+  padding : 30px 10px;
 }
