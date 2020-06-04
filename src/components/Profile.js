@@ -165,6 +165,9 @@ class Profile extends React.Component {
                             </Link>
                         </div>
                         {/* ================== */}
+                        <Link to='/CreateProfile'>
+                            <button className="btn btn-outline-success my-2 my-sm-0 ml-5">Create Profile</button>
+                        </Link>
                         <button
                             onClick={()=> logOutUser('button', 'loader')}
                          id='logout' className="btn btn-outline-danger my-2 my-sm-0 ml-5">
