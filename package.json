@@ -9,7 +9,6 @@
     "bootstrap": "^4.5.0",
     "firebase": "^7.14.4",
     "jquery": "^3.5.1",
-    "jquery-ui-dist": "^1.12.1",
     "netlify": "^4.1.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
