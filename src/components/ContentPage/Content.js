@@ -10,19 +10,7 @@ class Content extends React.Component {
         return(
             <div>
                 <AdminHeader />
-                <div className='relative'>
-                    <div className='sticky'>
-                        <p>Welcome !</p>
-                        <ul>
-                            <li><a href='#id'>Intro To Internship</a></li>
-                            <li><a href='#id'>Learn How To Fuck Like A Pro</a></li>
-                        </ul>
-                        <p><a href='#id'>Deleverables</a></p>
-                    </div>
-                    <div className='content'>
-                        <button><span className='icon icon-plus'></span>Create</button>
-                    </div>
-                </div>
+                <h1>This is the content page ! :)</h1>
             </div>
         )
     }
