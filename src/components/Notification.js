@@ -17,7 +17,7 @@ class Notification extends React.Component {
         return (
             <div>
                  <div className='notificationContainer'>
-                    <p className='notificationMessage'>Hello World, you don't have permission to view this file</p>
+                    <p className='notificationMessage'></p>
                 </div>
             </div>
         )
