@@ -1,6 +1,10 @@
 import React from 'react'
+<<<<<<< HEAD
 import $ from 'jquery'
 import {AdminHeader} from '../../components/AdminHeader'
+=======
+import AdminHeader from '../../components/AdminHeader'
+>>>>>>> parent of f9f54cc... Merge branch 'master' into ContentPage
 
 const firebase = require("firebase");
 // Required for side-effects
