@@ -59,7 +59,9 @@ searchProfile () {
             result.push(value)
             }else {
                 // no match bruver ! :)
-                if(searchQuery.toLowerCase().trim() + '' !== ''){
+                if(searchQuery.toLowerCase().trim() + '' === ''){
+                    handleNotification('Empty Search : No Match Found !')
+                }else {
                     handleNotification('No Match Found !')
                 }
             }
