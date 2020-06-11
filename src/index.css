@@ -874,7 +874,7 @@ input , label {
 }
 
 .btnTopic button {
-  padding : 10px 4%;
+  padding : 10px 1%;
   outline: none;
   margin: 0px;
   margin-right: 20px;
@@ -942,4 +942,19 @@ input , label {
 .sideSection a{
   margin-left: 15px;
   display: block;
+}
+
+/* added content style section */
+
+.AddedContent {
+  margin : 15px;
+  display: flex;
+  justify-content: start;
+}
+.AddedContent img {
+  height: 100px;
+  width: 100px;
+}
+.AddedContent p {
+  margin-left: 10px;
 }

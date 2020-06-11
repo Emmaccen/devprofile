@@ -33,12 +33,20 @@ class Deliverable extends React.Component {
         }
         console.log(deliverables)
 
-        db.collection('deliverables').add(
+        db.collection('deliverables').doc(id).collection(id).doc(new Date().toString()).set(
             {
                 deliverables
             }
         ).then(()=> {
+            $('#delivTitle').val('')
+            $('#delivInstruction').val('')
+            $('#delivPoint').val('')
+            $('#delivDate').val('')
             handleNotification('Successful !')
+            
+            
+            
+            
         }).catch(error => {
             Notification(error)
         })

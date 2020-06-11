@@ -7,6 +7,7 @@ import Content from './components/ContentPage/Content'
 import Profile from './components/Profile';
 import Topic from './components/ContentPage/Topic';
 import Deliverable from './components/ContentPage/Deliverable';
+import Video from './components/ContentPage/Video';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/Profile/:id' exact component={Profile}></Route>
           <Route path='/Content/Topic/:id' exact component={Topic}></Route>
           <Route path='/Content/Deliverable/:id' exact component={Deliverable}></Route>
+          <Route path='/Content/Video/:id' exact component={Video}></Route>
         </Switch>
       </div>
     </Router>
