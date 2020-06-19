@@ -82,7 +82,8 @@ class Topic extends React.Component {
             db.collection('contents').doc(id).set(
                 {
                     title,
-                    desc
+                    desc,
+                    uniqueId : id
                 }
             ).then(()=> {
                 $('#title').val('')

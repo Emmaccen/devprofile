@@ -8,6 +8,9 @@ import Profile from './components/Profile';
 import Topic from './components/ContentPage/Topic';
 import Deliverable from './components/ContentPage/Deliverable';
 import Video from './components/ContentPage/Video';
+import Marks from './components/MarksPage/Marks'
+import Submissions from './components/MarksPage/Submissions'
+import DeliverableSubmissions from './components/MarksPage/DeliverableSubmissions'
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path='/Content/Topic/:id' exact component={Topic}></Route>
           <Route path='/Content/Deliverable/:id' exact component={Deliverable}></Route>
           <Route path='/Content/Video/:id' exact component={Video}></Route>
+          <Route path='/Marks' exact component={Marks}></Route>
+          <Route path='/Submissions/:id/:uid' exact component={Submissions}></Route>
+          <Route path='/DeliverableSubmissions/:cid/:uid' exact component={DeliverableSubmissions}></Route>
         </Switch>
       </div>
     </Router>

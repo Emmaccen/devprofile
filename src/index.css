@@ -14,7 +14,7 @@
 }
 .icon {
   margin-right: 10px;
-  color : var(--primary);
+  color : orange;
 }
 
 body {
@@ -739,7 +739,7 @@ input , label {
   padding-right: 20%;
 }
 
-.content button , .topTitle button{
+.content button , .topTitle button , .submissionsContainer button, .filterSection button{
   color : whitesmoke;
   background-color: darkorange;
   border : none;
@@ -776,7 +776,7 @@ input , label {
 }
 .dropDown {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
 }
 .dropBtn {
   cursor: pointer;
@@ -796,11 +796,28 @@ input , label {
   min-width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  margin-top: 10px;
+  margin-top: 0px;
+}
+.tableDropDown form{
+  display: flex;
+  justify-content: space-between;
+}
+.tableDropDown button {
+  outline: none;
+  border : none;
+  font-size: 15px;
+  width: 100%;
+  padding : 10px;
+  color: #666;
 }
 .dropDownContent p {
-  padding : 10px 0px 0px 20px;
   cursor: pointer;
+  margin: 0px;
+  padding : 10px;
+  font-size: 15px;
+}
+.dropDownContent p:hover, .tableDropDown button:hover {
+  background-color: rgba(0,0,0,0.1);
 }
 .dropDownContent hr {
   margin: 0px;
@@ -848,6 +865,81 @@ input , label {
   outline: none;
 }
 
+/* video upload section style */
+
+.uploadVideo {
+  margin-bottom: 50px;
+}
+.videoHeader {
+  margin : 70px 0px 50px 0px;
+}
+.videoHeader span, .videoSection span {
+  font-size: 30px;
+}
+.videoHeader h3, .videoSection h3{
+  display: inline;
+}
+.videoHeader p {
+  margin-top: 15px;
+  width: 70%;
+}
+.videoUploadSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap : 50px;
+
+}
+.videoSection .videoHeader2 {
+  margin-bottom: 20px;
+}
+.videoUploadSection .videoSection .vidTitle {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  resize: none;
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: transparent;
+  border-radius: 5px;
+  padding : 5px;
+}
+.videoUploadSection .videoSection .vidDescription {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: transparent;
+  border-radius: 5px;
+  padding : 5px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+  background-color: orange;
+  padding : 10px;
+  width: 100%;
+  text-align: center;
+  color : white;
+  font-size: 20px;
+}
+.inputfile +label > .icon {
+  margin-right: 13px;
+  color : white;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  cursor: pointer;
+  background-color: darkorange;
+}
 
 
 .input {
@@ -957,4 +1049,67 @@ input , label {
 }
 .AddedContent p {
   margin-left: 10px;
+}
+
+
+/* submissions Page section style */
+.tableHeading {
+  margin : 70px auto 30px auto;
+  width: 50%;
+  text-align: center;
+}
+table {
+  table-layout: fixed;
+}
+thead tr {
+  text-align: center;
+}
+thead .tableTitle {
+  font-size: 18px;
+}
+thead .tableDate, thead .tablePoints {
+  font-size: 12px;
+}
+td {
+  text-align: center;
+  width: 142px;
+}
+
+.tableDropDown form .align {
+  display: flex;
+}
+.tableDropDown span {
+  /* color : orange; */
+}
+.tableDropDown form .align input {
+  background-color: transparent;
+  width: 70px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+  margin-right: 10px;
+}
+.tableDropDown form p{
+}
+
+.submissionsContainer {
+  margin-top: 100px;
+}
+.studentDetail {
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+}
+
+/* delivDetails page section style */
+
+.filterSection {
+  margin : 100px auto;
+  display: flex;
+  justify-content: space-around;
+}
+.filterSection button {
+  margin : 30px 10px 30px 0px;
+  border-radius: 5px;
+  padding : 5px 10px;
+  font-size: 14px;
 }

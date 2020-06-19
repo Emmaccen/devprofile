@@ -63,10 +63,13 @@ class Video extends React.Component {
             handleNotification('Video Uploaded')
             console.log('uploaded ......>>>')
             storageRef.child(`${id}/${file.name}`).getDownloadURL().then( url => {
-            db.collection('videos').doc(id).collection(id).doc(new Date().toString()).set({
+                const unique = new Date().toString()
+            db.collection('videos').doc(id).collection(id).doc(unique).set({
                 title : vidTitle,
                 description : vidDesc,
-                url
+                url,
+                uniqueId : unique
+
                  
             }).then(()=>{
                 handleNotification('Video Link Updated')
@@ -78,15 +81,32 @@ class Video extends React.Component {
         console.log(this.state)
 
         return (
-            <div>
-                <div>
-                    <textarea id='vidTitle' placeholder='Title' className='vidTitle'>
+            <div className='container uploadVideo'>
+                <div className='videoHeader'>
+                    <span className='icon icon-folder-video'></span>
+                    <h3>Add | Upload Videos</h3>
+                    <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, assumenda odio! Eos 
+                    laboriosam perspiciatis delectus voluptatibus alias minus est quasi dolore, autem id vitae dolorum velit deleniti, debitis odio voluptatem.
+                    </p>
+                </div>
+                <div className='videoUploadSection'>
+                    <div className='videoSection'>
+                        <div className='videoHeader2'>
+                            <span className='icon icon-info'></span>
+                            <h3>Details</h3>
+                        </div>
 
-                    </textarea>
-                    <textarea id='vidDesc' placeholder='Description' className='vidDescription'>
+                        <textarea id='vidTitle' placeholder='Title' className='vidTitle'></textarea>
+                        <textarea id='vidDesc' placeholder='Description' className='vidDescription'>
+                        </textarea>
+                        <input onChange={this.handleUpload} type='file'
+                        name="file" id="file" class="inputfile"></input>
+                        <label for="file"><span className='icon icon-upload'></span>Choose a file</label>
+                    </div>
+                    <div>
 
-                    </textarea>
-                    <input onChange={this.handleUpload} type='file'></input>
+                    </div>
                 </div>
                 < Notification />
             </div>

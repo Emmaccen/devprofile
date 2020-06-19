@@ -52,6 +52,9 @@ class AdminHeader extends React.Component {
                             <Link to='/Content'>
                                 <a className="nav-item nav-link">Content</a>
                             </Link>
+                            <Link to='/Marks'>
+                                <a className="nav-item nav-link">Marks</a>
+                            </Link>
                         </div>
                         {/* ================== */}
                         <form onSubmit={e => e.preventDefault()} className="form-inline my-2 my-lg-0">

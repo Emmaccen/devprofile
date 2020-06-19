@@ -29,10 +29,10 @@ class Deliverable extends React.Component {
             instruction : delivInstruction,
             point : delivPoint,
             date : delivDate,
-            id : id
+            id : id,
+            uniqueId : new Date().toString()
         }
         console.log(deliverables)
-
         db.collection('deliverables').doc(id).collection(id).doc(new Date().toString()).set(
             {
                 deliverables
