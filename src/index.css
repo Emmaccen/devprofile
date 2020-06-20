@@ -1113,3 +1113,12 @@ td {
   padding : 5px 10px;
   font-size: 14px;
 }
+.filterGroup {
+  margin : 60px auto;
+}
+.filterSection input {
+  background-color: transparent;
+  border : none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+}

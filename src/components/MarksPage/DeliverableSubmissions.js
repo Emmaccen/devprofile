@@ -85,8 +85,36 @@ class DeliverableSubmissions extends React.Component {
         )
     }
 
-    numericSort () {
-        
+    numericSort (e, args) {
+        e.preventDefault()
+        let newData = []
+            this.state.data.forEach(student => {
+                let input = $(e.target).val()
+                if(args === '>' && student.uid && parseInt(student.mark) > parseInt(input)){
+                    console.log( $(e.target).val(),">>>>", student.mark)
+                    newData.push(student)
+                }
+                else if(args === '<' && student.uid && parseInt(student.mark) < parseInt(input)){
+                    newData.push(student)
+                }
+                else if(args === '>=' && student.uid && parseInt(student.mark) >= parseInt(input)){
+                    newData.push(student)
+                }
+                else if(args === '<=' && student.uid && parseInt(student.mark) <= parseInt(input)){
+                    newData.push(student)
+                }
+                else if(args === '===' && student.uid && parseInt(student.mark) === parseInt(input)){
+                    newData.push(student)
+                }
+                else if(args === '!==' && student.uid && parseInt(student.mark) !== parseInt(input)){
+                    newData.push(student)
+                }
+            })
+            console.log(newData)
+            this.setState(
+                {onScreen : newData}
+            )
+
     }
 
     componentDidMount (){
@@ -202,36 +230,24 @@ class DeliverableSubmissions extends React.Component {
                    <div className='filterSection'>
                         <div>
                             <h4>Numberic Filters</h4>
-                            <div>
+                            <div className='filterGroup'>
                                 <div>
-                                    <p>Greater Than</p>
-                                    <input name='1' type='number'></input>
-                                    <label for='1'>Sort</label>
+                                    <input placeholder='Greater Than' onChange={(e)=> this.numericSort(e, '>')}  type='number'></input>
                                 </div>
                                 <div>
-                                    <p>Less Than</p>
-                                    <input name='2' type='number'></input>
-                                    <label for='2'>Sort</label>
+                                    <input placeholder='Less Than' onChange={(e)=> this.numericSort(e, '<')}  type='number'></input>
                                 </div>
                                 <div>
-                                    <p>Greater Than Or Equal To</p>
-                                    <input name='3' type='number'></input>
-                                    <label for='3'>Sort</label>
+                                    <input placeholder='Greater Than Or Equal To' type='number' onChange={(e)=> this.numericSort(e, '>=')}></input>
                                 </div>
                                 <div>
-                                    <p>Less Than Or Equal To</p>
-                                    <input name='4' type='number'></input>
-                                    <label for='4'>Sort</label>
+                                    <input placeholder='Less Than Or Equal To' type='number' onChange={(e)=> this.numericSort(e, '<=')}></input>
                                 </div>
                                 <div>
-                                    <p>Is Equal To</p>
-                                    <input name='5' type='number'></input>
-                                    <label for='5'>Sort</label>
+                                    <input placeholder='Is Equal To' type='number' onChange={(e)=> this.numericSort(e, '===')}></input>
                                 </div>
                                 <div>
-                                    <p>Is Not Equal To</p>
-                                    <input name='6' type='number'></input>
-                                    <label for='6'>Sort</label>
+                                    <input placeholder='Is Not Equal To' type='number' onChange={(e)=> this.numericSort(e, '!==')}></input>
                                 </div>
                             </div>
                         </div>

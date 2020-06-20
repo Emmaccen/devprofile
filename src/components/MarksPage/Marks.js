@@ -26,16 +26,16 @@ function Submits (props) {
     console.log(props)
     return (
             <td className='tableDropDown'>
-                <form>
+                {/* onSubmit={e => props.score(e, props.point, props.uid, props.assignmentId)} */}
+                <form onSubmit={props.score}>
                     <div className='align'>
-                            <input onSubmit={e => props.score(e, props.point, props.uid, props.assignmentId)} 
-                            id='scoreInput' max={props.point} type='number' placeholder={`_/${props.point}`}></input>
+                            <input id='' min='0' max={props.point} type='number' placeholder={`_/${props.point}`}></input>
                         {/* <i>{props.submissionDetails}</i> */}
-                        <p>{props.mark}</p>
+                        <h6>{props.mark}</h6>
                         <div className='centered dropDown'>
                             <span title='Menu' className='dropBtn icon-list'></span>
                             <div id='myDrop' className='dropDownContent'>
-                                    <button onClick={e => props.score(e, props.point, props.uid, props.assignmentId)}>Save</button>
+                                    <button type='submit'>Save</button>
                                     <hr></hr>
                                     <Link to={`/Submissions/${props.id}/${props.uid}`}>
                                         <p>View Details</p>
@@ -116,23 +116,21 @@ class Marks extends React.Component {
 
     score (e, point, uid, assignmentId) {
         e.preventDefault()
-        console.log(e.target)
-        console.log($('#scoreInput').val(), point, uid, assignmentId)
-        if($(e.target).val() > point || $('#scoreInput').val() < 0){
+        const value = $(e.target).find('input').val()
+        $(e.target).find('h6').text(value)
+        if(value > point || value < 0){
             handleNotification('Score Must Be Greater Than Points Awarded Or Less Than 0')
         }else {
-            const scoreValue = $('#scoreInput').val()
             const db = firebase.firestore()
             db.collection('submissions').doc(assignmentId).collection('submitted').doc(uid)
             .update({
-                mark : scoreValue
+                mark : value
             }).then(success => {
                 handleNotification('Score Updated ...')
-                // $('#scoreInput').val('')
+                // $(e.target).find('input').val('')
             }).catch(error => {
                 handleNotification(error)
             })
-
         }
     }
 
@@ -183,7 +181,7 @@ class Marks extends React.Component {
                                 submissionDetails = {'On Time'}
                                 point = {deliv.point}
                                 assignmentId = {subs.assignmentId}
-                                score = {this.score}
+                                score ={ e => this.score(e, deliv.point, student.uid, subs.assignmentId)}
                             />
                         )
                     }else if (!foundMatch && (this.state.submissionList.length -1) === index){
