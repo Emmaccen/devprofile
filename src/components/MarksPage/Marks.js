@@ -23,7 +23,7 @@ function TableHead (props) {
     )
 }
 function Submits (props) {
-    console.log(props)
+    // console.log(props)
     return (
             <td className='tableDropDown'>
                 {/* onSubmit={e => props.score(e, props.point, props.uid, props.assignmentId)} */}
@@ -116,28 +116,32 @@ class Marks extends React.Component {
 
     score (e, point, uid, assignmentId) {
         e.preventDefault()
-        const value = $(e.target).find('input').val()
-        $(e.target).find('h6').text(value)
-        if(value > point || value < 0){
-            handleNotification('Score Must Be Greater Than Points Awarded Or Less Than 0')
-        }else {
-            const db = firebase.firestore()
-            db.collection('submissions').doc(assignmentId).collection('submitted').doc(uid)
-            .update({
-                mark : value
-            }).then(success => {
-                handleNotification('Score Updated ...')
-                // $(e.target).find('input').val('')
-            }).catch(error => {
-                handleNotification(error)
-            })
+        const value = parseInt($(e.target).find('input').val())
+        if(!isNaN(value)){
+            $(e.target).find('h6').text(value)
+            if(value > parseInt(point) || value < 0){
+                handleNotification('Score Must Be Greater Than Points Awarded Or Less Than 0')
+            }else {
+                const db = firebase.firestore()
+                db.collection('submissions').doc(assignmentId).collection('submitted').doc(uid)
+                .update({
+                    mark : value
+                }).then(success => {
+                    handleNotification('Score Updated ...')
+                    // $(e.target).find('input').val('')
+                }).catch(error => {
+                    handleNotification(error)
+                })
+            }
+        }else{
+            handleNotification('Please Provide Input')
         }
     }
 
 
     render () {
         // console.log(this.state.studentList)
-        console.log(this.state.submissionList)
+        // console.log(this.state.submissionList)
         const headings = this.state.deliverables.map(delivs => {
             // console.log(delivs.id)
             return (
@@ -153,18 +157,20 @@ class Marks extends React.Component {
 
        const average = this.state.deliverables.map(deliv => {
                
-       return this.state.submissionList.reduce((acc, current) => {
-                if(deliv.uniqueId === current.assignmentId){
-                    console.log(Math.ceil( (current.mark / current.point) * 100/1))
-                    return acc += Math.ceil( (current.mark / current.point) * 100/1)
-                }else {
-                    return 0
-                }
+           let scoreCount = 0
+           let total = 0
 
-            },0) /2
+           this.state.submissionList.forEach(sub => {
+               if(deliv.uniqueId === sub.assignmentId){
+                   scoreCount += sub.mark
+                   total+= parseInt(deliv.point)
+               }
+           })
+           return ((scoreCount / total) * 100)
+
         })
         const averageScores = average.map(scores => {
-            return <td>{scores} %</td>
+            return <td>{isNaN(scores) ? 0 : Math.ceil(scores)} %</td>
         })
 
         const scores = this.state.studentList.map(student => {
@@ -213,7 +219,7 @@ class Marks extends React.Component {
                     }
             })
         })
-        console.log(totalSubmissions)
+        // console.log(totalSubmissions)
 
         return (
             <div>

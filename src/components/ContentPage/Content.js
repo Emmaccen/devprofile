@@ -17,7 +17,7 @@ function Render (props) {
         deli.forEach(deli => {
             
             
-            if(title.titleId === deli.deliverables.id){
+            if(title.uniqueId === deli.deliverables.id){
                 subs.push(deli)
                 
             }else {}
@@ -105,7 +105,7 @@ class Content extends React.Component {
                 div.append(p)
 
             deli.forEach((deliv) => {
-                    if(titles.titleId === deliv.deliverables.id){
+                    if(titles.uniqueId === deliv.deliverables.id){
                         const a = document.createElement('a')
                         a.setAttribute('href', `#${titles.title}`)
                         const p = document.createElement('p')
@@ -128,7 +128,6 @@ class Content extends React.Component {
         .then((snapshot) => {
             snapshot.forEach((data) =>{
                 const value = data.data()
-                value.titleId = data.id
                 titles.push(value)
                 
             })

@@ -2,6 +2,8 @@ import React from 'react'
 import $, { extend } from 'jquery'
 import {Notification} from '../Notification'
 import {handleNotification} from '../Notification'
+import {AdminHeader} from '../AdminHeader'
+import {logOutUser} from '../AdminHeader'
 import { firestore } from 'firebase';
 
 
@@ -28,28 +30,42 @@ function DeliverableInfo (props) {
 
 function StudentInfo (props) {
     return (
-        <div className='container mt-5'>
+        <div className='studentInfo container mt-5'>
             <div className='studentDetail'>
                 <div>
-                    <p>Name : {props.name}</p>
-                    <p>Date : {props.time}</p>
-                    <p>Email : {props.email}</p>
+                    <h5>Name</h5>
+                    <p>{props.name}</p>
+                    <h5>Time</h5>
+                    <p> {props.time}</p>
+                    <h5>Email</h5>
+                    <p> {props.email}</p>
                 </div>
                 <div>
-                    <p>{props.fileUrl}</p>
+                <div className='downloadLink'>
+                    <h4>Download Link</h4>
+                    <span className='icon link icon-link'></span>
+                    <a href={props.fileUrl}>{props.fileUrl.length > 70 ? props.fileUrl.slice(0, 70).concat('...') : props.fileUrl}</a>
+                    <h5>
+                        <span className={`icon ${props.completed ? 'icon-checkmark' : 'icon-cross2'}`}></span>
+                        <span>Completed : {props.completed ? 'true' : 'false'}</span>
+                    </h5>
+                    <h5>Private Comment : </h5>
+                    <p>{props.privateComment}</p>
                 </div>
-                <div>
-                    <p>Score : {props.mark}</p>
+                    <div className='flex'>
+                        <p className='icon icon-star'></p>
+                        <p className='score'>Score {props.mark}</p>
+                    </div>
                     <form onSubmit={props.score}>
                         <input type='number' min='0' max={props.max} id='scoreInput'></input>
                         <button type='submit'>Score</button>
                     </form>
                 </div>
             </div>
-            <div className='card submissionComment'>
+            <div className='submissionComment'>
                         <div className='accImg backgroundFix'></div>
-                        <input placeholder='Private Comment ...' id='privateComment'></input>
-                        <div className='alignBase'>
+                        <input placeholder='Send A Reply ...' id='privateComment'></input>
+                        <div className='centered'>
                             <span id='privateBtn' disabled className='icon icon-share'></span>
                         </div>
             </div>
@@ -97,18 +113,20 @@ class Submissions extends React.Component {
 
     score (e) {
         e.preventDefault()
-        if($('#scoreInput').val() > `${this.state.document.point}` || $('#scoreInput').val() < 0){
+        let score = parseInt($('#scoreInput').val())
+        let point = parseInt(`${this.state.document.point}`)
+        if( score > point || score < 0){
             handleNotification('Score Must Be Greater Than Points Awarded Or Less Than 0')
         }else {
             const link = this.state.SubmissionDetails
-            const scoreValue = $('#scoreInput').val()
             const db = firebase.firestore()
             db.collection('submissions').doc(link.assignmentId).collection('submitted').doc(link.uid)
             .update({
-                mark : scoreValue
+                mark : score
             }).then(success => {
                 handleNotification('Score Updated ...')
                 $('#scoreInput').val('')
+                $('.score').text('Score ' + score)
             }).catch(error => {
                 handleNotification(error)
             })
@@ -121,6 +139,7 @@ class Submissions extends React.Component {
         const doc = this.state.document
         return (
                 <div>
+                    <AdminHeader />
                     <DeliverableInfo 
                         title = {doc.title}
                         point = {doc.point}
@@ -136,6 +155,7 @@ class Submissions extends React.Component {
                     profileUrl = {values.fileUrl}
                     time = {values.time}
                     max = {this.state.document.point}
+                    completed = {values.completed}
                     score = {e => this.score(e)}
                     />
 
