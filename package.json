@@ -7,7 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
-    "firebase": "^7.14.4",
+    "firebase": "^10.9.0",
     "jquery": "^3.5.1",
     "netlify": "^4.1.6",
     "react": "^16.13.1",
